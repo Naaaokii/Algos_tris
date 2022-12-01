@@ -1,0 +1,10 @@
+début tri_selection(parametre A)
+    Pour i allant de O à len(A)
+        Pour j variant de i+1 à len(A) :
+            Si A[i] > A[j] :
+                A[i], A[j] <- A[j], A[i]
+            Fin Si
+        Fin pour
+    Fin pour
+    Retourner A
+Fin tri_selection
