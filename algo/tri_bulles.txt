@@ -1,7 +1,8 @@
-pour i variant de 0 à n :
-    pour j variant de 0 à n - 1 :
-        si liste[j + 1] ≤ liste[j] :
-            échanger liste[j + 1] et liste[j]
-    fin pour
-fin pour
-
+Debut
+Pour i variant de 0 à n :
+    Pour j variant de 0 à n - 1 :
+        Si liste[j + 1] ≤ liste[j] :
+            Echanger liste[j + 1] et liste[j]
+    Fin pour
+Fin pour
+Fin
