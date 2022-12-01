@@ -18,4 +18,3 @@ print(tri_insertion(my_tab))
 # tab_sorted= []
 # import 
 # my_tab[0]= min_values
-#while

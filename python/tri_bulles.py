@@ -23,6 +23,6 @@ def stat(min, max, step, nbr):
             moyenne += tri_bulles(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
+    return "Calculs finis"
     
-
 print(stat(10,20,5,10))
