@@ -1,5 +1,5 @@
 from random import randrange
-t = [randrange(0, 10) for i in range(10)]
+t = [randrange(0,10) for i in range(10)]
 print(t)
 def tri_bulles(t):
     l = len(t)
