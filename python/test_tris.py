@@ -37,15 +37,25 @@ def tri_selection(t):
 
 # Tri Insertion
 
+def tri_insertion(t):
+    for i in range (1, len(t)):
+        a = t[i]
+        b = i-1
+        while b >= 0 and t[b] > a: 
+            t[b + 1] = t[b] 
+            b -= 1
+        t[b + 1] = a 
+    return t
+
 # Avec un tableau déjà trié
 
 print("Tableau déjà trié")
 print()
 from random import randrange
 from time import time
-A = [randrange(10, 5001) for i in range(5000)]
+A = [randrange(10, 1001) for i in range(1000)]
 for i in A:
-    for k in range(5000):
+    for k in range(1000):
         A[k] = k
 
 debut_bulles = time()
@@ -76,10 +86,10 @@ print("tableau dans le pire des cas")
 print()
 from random import randrange
 from time import time
-A = [randrange(10, 5001) for i in range(5000)]
+A = [randrange(10, 1001) for i in range(1000)]
 
 for i in A:
-    for k in range(5000):
+    for k in range(1000):
         A[k] = k
 AA = [num for num in reversed(A)]
 
@@ -112,7 +122,7 @@ print()
 
 from random import randrange
 from time import time
-A = [randrange(10, 5001) for i in range(5000)]
+A = [randrange(10, 1001) for i in range(1000)]
 
 debut_bulles = time()
 tri_bulles(A)
