@@ -16,7 +16,10 @@ def tri_bulles(t):
 print(tri_bulles(t))
 
 def stat(min, max, step, nbr):
-    t = [randrange(min, max, step) for i in range(nbr)]
-    return t
+    for i in range(min, max, step):
+        for j in range(nbr):
+            t= [randrange(100) for i in range(i)]
+            print(t)
+    
 
 print(stat(10,20,5,10))
