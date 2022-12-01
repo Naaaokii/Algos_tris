@@ -1,0 +1,16 @@
+Debut 
+continue <- Vrai
+passage <- 0
+Tant que continue == Vrai :
+   continue <- Faux 
+   passage <- passage + 1
+   Pour i allant de O à len(T) - passage :
+       Si T[i] > T[i+1] :
+           continue <- Vrai
+           provisoire <- T[i+1]
+           T[i+1] <- T[i]
+           T[i] <- provisoire
+       Fin Si
+   Fin Pour 
+Fin Tant que 
+Fin 
