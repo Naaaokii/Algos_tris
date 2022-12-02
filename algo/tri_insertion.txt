@@ -5,7 +5,7 @@ Debut tri_insertion(parametre t)
         Tant que b >= 0 ET t[b] > a:
             t[b+1]<-- t[b]
             b <-- b-1
-        t[b+1] <--A
+        t[b+1] <-- a
         Fin tant que
     Fin Pour
 Fin    
