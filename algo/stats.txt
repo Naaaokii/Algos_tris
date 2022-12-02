@@ -1,0 +1,12 @@
+Debut stat(parametres min, max, step, nbr)
+    Pour i de min à max en allant de step en step
+        moyenne <- 0
+        Pour j jusqu'à nbr
+            t <- tableau de i valeur prenant des nombres aléatoire entre 1 et 100
+            moyenne <- moyenne + methode_de_tri(t)
+        Fin pour
+        moyenne = moyenne/10
+        Afficher i et moyenne
+    Fin pour
+Fin stat
+    
