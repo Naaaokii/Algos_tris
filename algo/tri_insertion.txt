@@ -1,0 +1,11 @@
+Debut tri_insertion(parametre t)
+    Pour i variant de 1 à len(t);
+        a <-- t[i]
+        b <-- i-1
+        Tant que b >= 0 ET t[b] > a:
+            t[b+1]<-- t[b]
+            b <-- b-1
+        t[b+1] <--A
+        Fin tant que
+    Fin Pour
+Fin    
