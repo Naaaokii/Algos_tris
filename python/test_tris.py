@@ -24,7 +24,7 @@ def stat_bulles_trie(min, max, step, nbr):
             moyenne += tri_bulles(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Tri à bulles fini"
+    return "Tri à bulles finis"
 
 
 def stat_bulles_pas_trie(min, max, step, nbr):
@@ -39,7 +39,7 @@ def stat_bulles_pas_trie(min, max, step, nbr):
             moyenne += tri_bulles(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Tri à bulles optimisé fini"
+    return "Tri à bulles finis"
 
 
 
@@ -75,7 +75,7 @@ def stat_bulles_mieux_trie(min, max, step, nbr):
             moyenne += tri_bulles_mieux(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Tri à bulles optimisé fini"
+    return "Tri à bulles optimisé finis"
 
 def stat_bulles_mieux_pas_trie(min, max, step, nbr):
     for i in range(min, max+1, step):
@@ -89,7 +89,7 @@ def stat_bulles_mieux_pas_trie(min, max, step, nbr):
             moyenne += tri_bulles_mieux(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Tri à bulles optimisé fini"
+    return "Tri à bulles optimisé finis"
 
 
 
@@ -132,32 +132,55 @@ def stat_selection_pas_trie(min, max, step, nbr):
             moyenne += tri_selection(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Tri selection fini"
+    return "Tri selection finis"
 
 
 
 
 # Tri Insertion
 
-def tri_insertion(t):
-    for i in range (1, len(t)):
-        a = t[i]
+def tri_insertion(my_tab):
+    compteur = 0
+    for i in range (1, len(my_tab)):
+        a = my_tab[i]
         b = i-1
-        while b >= 0 and t[b] > a: 
-            t[b + 1] = t[b] 
+        compteur+=1
+        while b >= 0 and my_tab[b] > a: 
+            my_tab[b + 1] = my_tab[b] 
             b -= 1
-        t[b + 1] = a 
-    return t
+            compteur+=3
+        my_tab[b + 1] = a 
+    return compteur
 
-def stat_insertion(min, max, step, nbr):
+def stat_insertion_trie(min, max, step, nbr):
     for i in range(min, max+1, step):
         moyenne = 0
         for j in range(nbr):
-            t= [randrange(100) for i in range(i)]
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
             moyenne += tri_insertion(t)
         moyenne = moyenne/nbr    
         print(i, moyenne)
-    return "Calculs finis"
+    return "Tri insertion finis"
+
+def stat_insertion_pas_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            t = [num for num in reversed(t)]
+            moyenne += tri_insertion(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri insertion finis"
+
+
+
 
 # Avec un tableau déjà trié
 
@@ -257,6 +280,8 @@ print("durée du tri_selection :", fin_selection - debut_selection)
 print("durée du tri_insertion :", fin_insertion - debut_insertion)
 
 
+
+
 # Tests des stats
 print()
 print()
@@ -268,6 +293,8 @@ print(stat_bulles_mieux_trie(10,20,5,10))
 print()
 print(stat_selection_trie(10,20,5,10))
 print()
+print(stat_insertion_trie(10,20,5,10))
+print()
 print()
 print()
 print("Tableau pas triés")
@@ -277,3 +304,5 @@ print()
 print(stat_bulles_mieux_pas_trie(10,20,5,10))
 print()
 print(stat_selection_pas_trie(10,20,5,10))
+print()
+print(stat_insertion_pas_trie(10,20,5,10))
