@@ -3,6 +3,7 @@ Debut tri_bulles(parametre t)
         Pour j variant de 0 à n - 1 :
             Si t[j + 1] ≤ t[j] :
                 Echanger t[j + 1] et t[j]
+            Fin si
         Fin pour
     Fin pour
 Fin tri_bulles
