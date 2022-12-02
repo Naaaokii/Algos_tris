@@ -9,7 +9,7 @@ def tri_selection(A):
             if A[i] > A[j]:
                 A[i], A[j] = A[j], A[i]
                 compteur+=3
-    return A
+    return compteur
 print(tri_selection(A))
 
 

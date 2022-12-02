@@ -1,39 +1,141 @@
 # Tri bulles
 
 def tri_bulles(t):
+    compteur = 0
     l = len(t)
     for i in range (l-1, 1, -1):
         for j in range(0,i):
+            compteur+=1
             if t[j+1] < t[j]:
                 tab = t[j+1]
                 t[j+1] = t[j]
                 t[j] = tab
-    return t 
+                compteur+=3
+    return compteur 
+
+def stat_bulles_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            moyenne += tri_bulles(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri à bulles fini"
+
+
+def stat_bulles_pas_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            t = [num for num in reversed(t)]
+            moyenne += tri_bulles(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri à bulles optimisé fini"
+
+
+
 
 # Tri bulles mieux
 
-def tri_bulles_mieux(t):
+def tri_bulles_mieux(T):
     Continue = True
     passage = 0
+    compteur = 0
     while Continue == True:
         Continue = False  # it is assumed that there are no more exchanges to be made
         passage += 1
-        for beginning in range(0, len(t) - passage):
-            if t[beginning] > t[beginning + 1]:
+        for beginning in range(0, len(T) - passage):
+            compteur += 1
+            if T[beginning] > T[beginning + 1]:
                 Continue = True  # we must continue because an exchange has been made
-                provisional = t[beginning + 1]
-                t[beginning + 1] = t[beginning]
-                t[beginning] = provisional
-    return t
+                provisional = T[beginning + 1]
+                T[beginning + 1] = T[beginning]
+                T[beginning] = provisional
+                compteur += 3
+    return compteur
+
+
+def stat_bulles_mieux_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            moyenne += tri_bulles_mieux(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri à bulles optimisé fini"
+
+def stat_bulles_mieux_pas_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            t = [num for num in reversed(t)]
+            moyenne += tri_bulles_mieux(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri à bulles optimisé fini"
+
+
+
+
 
 # Tri Selection
 
-def tri_selection(t):
-    for i in range(len(t)):
-        for j in range(i + 1, len(t)):
-            if t[i] > t[j]:
-                t[i], t[j] = t[j], t[i]
-    return t
+def tri_selection(A):
+    compteur = 0
+    for i in range(len(A)):
+        for j in range(i + 1, len(A)):
+            compteur+=1
+            if A[i] > A[j]:
+                A[i], A[j] = A[j], A[i]
+                compteur+=3
+    return compteur
+
+def stat_selection_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            moyenne += tri_selection(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri selection finis"
+
+def stat_selection_pas_trie(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t = [randrange(100) for i in range(i)]
+            for z in t:
+                for k in range(i):
+                    t[k] = k
+            t = [num for num in reversed(t)]
+            moyenne += tri_selection(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Tri selection fini"
+
+
+
 
 # Tri Insertion
 
@@ -46,6 +148,16 @@ def tri_insertion(t):
             b -= 1
         t[b + 1] = a 
     return t
+
+def stat_insertion(min, max, step, nbr):
+    for i in range(min, max+1, step):
+        moyenne = 0
+        for j in range(nbr):
+            t= [randrange(100) for i in range(i)]
+            moyenne += tri_insertion(t)
+        moyenne = moyenne/nbr    
+        print(i, moyenne)
+    return "Calculs finis"
 
 # Avec un tableau déjà trié
 
@@ -79,7 +191,6 @@ print("durée du tri_bulles_mieux :", fin_bulles_mieux - debut_bulles_mieux)
 print("durée du tri_selection :", fin_selection - debut_selection)
 print("durée du tri_insertion :", fin_insertion - debut_insertion)
 print()
-
 
 # Avec un tableau trié dans le pire des cas
 print("tableau dans le pire des cas")
@@ -144,3 +255,25 @@ print("durée du tri_bulles :", fin_bulles - debut_bulles)
 print("durée du tri_bulles_mieux :", fin_bulles_mieux - debut_bulles_mieux)
 print("durée du tri_selection :", fin_selection - debut_selection)
 print("durée du tri_insertion :", fin_insertion - debut_insertion)
+
+
+# Tests des stats
+print()
+print()
+print("Tableau déjà triés")
+print()
+print(stat_bulles_trie(10,20,5,10))
+print()
+print(stat_bulles_mieux_trie(10,20,5,10))
+print()
+print(stat_selection_trie(10,20,5,10))
+print()
+print()
+print()
+print("Tableau pas triés")
+print()
+print(stat_bulles_pas_trie(10,20,5,10))
+print()
+print(stat_bulles_mieux_pas_trie(10,20,5,10))
+print()
+print(stat_selection_pas_trie(10,20,5,10))
